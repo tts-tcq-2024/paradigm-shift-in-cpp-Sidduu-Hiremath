@@ -1,7 +1,7 @@
 #include <unordered_set>
 #include <cassert>
 #include <iostream>
-#include "BatteryManagementSystem.h"
+#include "BatteryManagementSystem.h" 
 
 void testNormalConditions(const std::unordered_set<std::string>& warningParameters) {
     assert(batteryIsOk(25, 70, 0.7, warningParameters) == true);  // All normal
