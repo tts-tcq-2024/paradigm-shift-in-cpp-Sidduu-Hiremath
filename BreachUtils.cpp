@@ -28,15 +28,17 @@ BreachType checkBatteryParametersAreOk(float value, float minValue, float maxVal
     return checkWarning(value, minValue, maxValue, warningTolerance);
 }
 
+#include <unordered_map>
+
 std::string getBreachMessage(const std::string& parameter, BreachType breach) {
-    switch (breach) {
-        case TOO_LOW:
-            return parameter + " is too low!\n";
-        case TOO_HIGH:
-            return parameter + " is too high!\n";
-        case WARNING:
-            return parameter + " warning: approaching limit!\n";
-        default:
-            return parameter + " is normal.\n";
-    }
+    static const std::unordered_map<BreachType, std::string> messages = {
+        {TOO_LOW, parameter + " is too low!\n"},
+        {TOO_HIGH, parameter + " is too high!\n"},
+        {WARNING, parameter + " warning: approaching limit!\n"},
+        {NORMAL, parameter + " is normal.\n"}
+    };
+
+    return messages.at(breach);
+}
+
 }
