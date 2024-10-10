@@ -41,4 +41,4 @@ std::string getBreachMessage(const std::string& parameter, BreachType breach) {
     return messages.at(breach);
 }
 
-}
+
